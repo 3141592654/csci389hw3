@@ -1,1 +1,1 @@
-# csci389hw3
+Mason Koch and Sebastian Simmons
