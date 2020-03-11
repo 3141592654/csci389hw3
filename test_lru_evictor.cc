@@ -5,11 +5,11 @@
 #include <iostream>
 #include "lru_evictor.hh"
 
+Lru_evictor* test_evictor = new Lru_evictor();  // A fun exercise for the reader: replace this with a Fifo_evictor and watch it fail.
 Cache test_cache(1024, 0.75, test_evictor);
 void test_lru_evictor_basic() {
     // To adhere to the global varible requirement of HW3,
     // we are reconstructing cache with the desired constructor for our constructor tests.
-    Lru_evictor* test_evictor = new Lru_evictor();  // A fun exercise for the reader: replace this with a Fifo_evictor and watch it fail.
 
     char charr0[] = "In this assignment, you will write a generic look-aside cache. A look-aside cache is a key-valueSTOPstorage for items that are difficult or slow to compute. Whenever a client code requires such anSTOPitem, it first queries the cache for the desired key. If the cache has it, it returns the associatedSTOPvalue. If it doesn't, the client obtains the value on its own (presumably through a slower process),STOPand then saves it to the cache for future references. If the data access patterns exhibit temporalSTOPlocality, the use of the cache will end up being beneficial and faster than always computing theSTOPvalues. Your job will be to implement the cache. In C++, write a cache_lib.cc file to complementSTOP";
     test_cache.set("key0", charr0, 712);
