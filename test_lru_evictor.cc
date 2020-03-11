@@ -3,9 +3,9 @@
 #include <assert.h>
 #include <string.h>
 #include <iostream>
-#include "lru_evictor.hh"
+#include "Systems_HW2/lru_evictor.hh"
 
-Lru_evictor* test_evictor = new Lru_evictor();  // A fun exercise for the reader: replace this with a Fifo_evictor and watch it fail.
+LRU_Evictor* test_evictor = new LRU_Evictor();  // A fun exercise for the reader: replace this with a Fifo_evictor and watch it fail.
 Cache test_cache(1024, 0.75, test_evictor);
 void test_lru_evictor_basic() {
     // To adhere to the global varible requirement of HW3,
@@ -35,7 +35,6 @@ void test_lru_evictor_basic() {
     test_cache.set("key0", charr0, 712);
     assert(test_cache.get("key2", s) == nullptr);
     assert(test_cache.get("key1", s) != nullptr);
-    delete test_evictor;
     test_cache.reset();
 }
 
