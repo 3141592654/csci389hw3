@@ -4,12 +4,9 @@ Mason Koch and Sebastian Simmons
 ## Usage instructions
 Make the project using make.
 
-./test_cache_lib
-
-./test_fifo
-
-./test_lru_evictor
-
+./test_cache_lib  
+./test_fifo  
+./test_lru_evictor  
 ## Tests - Our Cache
 We did not write tests that test the hasher or max_load_factor constructor parameters as that would test the internal structure of the cache object. This makes it hard to test it in a meaningful way.
 
