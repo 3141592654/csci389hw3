@@ -7,6 +7,7 @@ Make the project using make.
 ./test_cache_lib tests everything (not just cache_lib).
 
 ## Tests
+We did not write tests that test the hasher or max_load_factor constructor parameters as that would test the internal structure of the cache object.
 
 |Name|Description|Status|
 |----|-----------|------|
