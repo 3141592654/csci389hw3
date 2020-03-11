@@ -16,7 +16,7 @@ We did not write tests that test the hasher or max_load_factor constructor param
 |test_space_used|tests that the space used returns the proper value when objects are added to cache|pass|
 |test_reset|tests that reset properly resets the cache|pass|
 |test_fifo_evictor|tests the FIFO evictor for proper deletion order|pass|
-|test_lru_evictor_basic|tests the LRU evictor for deletion correctness|pass
+|test_lru_evictor_basic|tests the LRU evictor for deletion correctness|pass|
 
 ## Part 2 - Danny + Hannah
 |Name|Description|Status|
@@ -25,3 +25,5 @@ We did not write tests that test the hasher or max_load_factor constructor param
 |test_del|tests deleting an object from the cache|pass|
 |test_space_used|tests that the space used returns the proper value when objects are added to cache|FAIL|
 |test_reset|tests that reset properly resets the cache|pass|
+|test_fifo_evictor|tests the FIFO evictor for proper deletion order|pass|
+|test_lru_evictor_basic|tests the LRU evictor for deletion correctness|pass|
