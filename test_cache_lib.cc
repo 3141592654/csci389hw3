@@ -6,9 +6,9 @@
 #include <assert.h>
 #include <string.h>
 #include <iostream>
-#include "fifo_evictor.hh"
-#include "lru_evictor.hh"
 
+// The prompt says to use a global variable and to reset it after each test.
+// I checked with Eitan, and he confirms this is desired behavior.
 Cache test_cache(1024);
 
 void test_get() {
@@ -111,7 +111,5 @@ int main() {
     test_del();
     test_space_used();
     test_reset();
-    //test_fifo_evictor();
-    //test_lru_evictor_basic();
 }
 
