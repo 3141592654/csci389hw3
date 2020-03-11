@@ -28,3 +28,5 @@ We did not write tests that test the hasher or max_load_factor constructor param
 |test_reset|tests that reset properly resets the cache|pass|
 |test_fifo_evictor|tests the FIFO evictor for proper deletion order|pass|
 |test_lru_evictor_basic|tests the LRU evictor for deletion correctness|pass|
+
+When testing the lru_evictor, we had used Lru_evictor where as they used LRU_Evictor for their class name. This created a compilation issue when creating an lru_evcitor object. 
