@@ -5,7 +5,9 @@ Mason Koch and Sebastian Simmons
 Make the project using make.
 
 ./test_cache_lib
+
 ./test_fifo
+
 ./test_lru_evictor
 
 ## Tests - Our Cache
