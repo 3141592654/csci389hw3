@@ -1,0 +1,6 @@
+[submodule "hash-it-out"]
+	path = hash-it-out
+	url = https://github.com/kai-pinckard/hash-it-out
+[submodule "cs389hw2"]
+	path = cs389hw2
+	url = https://github.com/zhengyaogu/cs389hw2
