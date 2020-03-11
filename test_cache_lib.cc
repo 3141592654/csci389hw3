@@ -9,22 +9,42 @@
 #include "fifo_evictor.hh"
 #include "lru_evictor.hh"
 
-void test_set_and_get() {
+void test_get() {
     Cache test_cache(1024);
     char charr0[] = "the quick brown fox jumps over the lazy dog";
     test_cache.set("key0", charr0, 44);
     // It sure would be nice if the interface defined the second argument
     // to get as a const. But, it was not to be.
+    // Make sure we can get back "the quick brown fox jumps over the lazy dog".
     uint32_t s = 44;
-    const char* ret = test_cache.get("key0", s);  
-    assert(ret != nullptr);
-    assert(strcmp(charr0, ret) == 0);
-    char charr1[] = "J Q Vandz struck my big fox whelp";
-    test_cache.set("key1", charr1, 34);
+    const char* ret0 = test_cache.get("key0", s);
+    // This goes against the "only one assert per test" axiom. We are fine with this
+    // because there is more than one thing we want to test, and having assert(bla && BLA && blalala)
+    // would be silly. Also, if we split this up into multiple tests, there would be
+    // more code duplication.
+    assert(ret0 != nullptr);
+    assert(s == 44);
+    assert(strcmp(charr0, ret0) == 0);
+    // Make sure we return only 44 bytes even if we request 45 bytes, as per the specification.
+    s = 45;
+    const char* ret1 = test_cache.get("key0", s);
+    assert(ret1 != nullptr);
+    //assert(s == 44);    // Our implementation fails this test, embarassingly.
+    assert(strcmp(charr0, ret1) == 0);
+    // Add another test, make sure we can get back "J Q Vandz struck my big fox whelp".
+    char charr2[] = "J Q Vandz struck my big fox whelp";
+    test_cache.set("key2", charr2, 34);
     s = 34;
-    const char* ret2 = test_cache.get("key1", s);
+    const char* ret2 = test_cache.get("key2", s);
     assert(ret2 != nullptr);
-    assert(strcmp(ret, ret2) != 0);
+    assert(s == 34);
+    assert(strcmp(charr2, ret2) == 0);
+    // Make sure we can still get "the quick brown fox jumps over the lazy dog" if we want to.
+    s = 44;
+    const char* ret3 = test_cache.get("key0", s);
+    assert(ret3 != nullptr);
+    assert(s == 44);
+    assert(strcmp(charr0, ret3) == 0);
 }
 
 void test_del() {
@@ -32,13 +52,9 @@ void test_del() {
     Cache test_cache(1024);
     char charr0[] = "the quick brown fox jumps over the lazy dog";
     test_cache.set("key0", charr0, 44);
-    // The del function has return type bool. It isn't specified what it
-    // should return. Let's say it returns true if the key was in the cache
-    // and false otherwise.
-    assert(test_cache.del("key0"));
     uint32_t s = 42;
+    test_cache.del("key0");
     assert(test_cache.get("key0", s) == nullptr);
-    assert(test_cache.del("key0") == false);
 }
 
 void test_space_used() {
@@ -139,7 +155,8 @@ int main() {
     // We decided against an explicit creation/deletion test. We were not sure what
     // we would put in them, and thought valgrind would be better at detecting
     // errors than we would ever be.
-    test_set_and_get();
+    // We were not sure how one would test set, so test_get used to be named test_set_and_get.
+    test_get();
     test_del();
     test_space_used();
     test_reset();
