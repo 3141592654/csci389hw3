@@ -1,7 +1,7 @@
 // LRU evictor
 #pragma once
 
-#include "evictor.hh"
+#include "../evictor.hh"
 #include <string>
 #include <unordered_map>
 #include <functional>

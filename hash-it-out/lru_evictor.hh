@@ -5,7 +5,7 @@
 #include <list>
 #include <unordered_map>
 #include <iostream>
-#include "evictor.hh"
+#include "../evictor.hh"
 
 
 class LRUEvictor : public Evictor
