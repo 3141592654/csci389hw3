@@ -22,7 +22,6 @@ We did not write tests that test the hasher or max_load_factor constructor param
 ## Part 2 - Danny + Hannah
 |Name|Description|Status|
 |----|-----------|------|
-|test_set|tests
 |test_get|tests the retrieval of a stored object in cache|pass|
 |test_del|tests deleting an object from the cache|pass|
 |test_space_used|tests that the space used returns the proper value when objects are added to cache|FAIL|
