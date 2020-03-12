@@ -1,4 +1,4 @@
-#include "evictor.hh"
+#include "../evictor.hh"
 #include "lru_evictor.hh"
 
 //https://www.interviewcake.com/concept/java/lru-cache
