@@ -41,7 +41,7 @@ When testing the lru_evictor, we had used Lru_evictor where as they used LRU_Evi
 |test_fifo_evictor|tests the FIFO evictor for proper deletion order|null|
 |test_lru_evictor_basic|tests the LRU evictor for deletion correctness|null|
 
-We had a compilation issue because their object file was output as lib_cache.o and our Makefile was looking for cache_lib.cc to make cache_lib.o. We changed the include of 
+We had a compilation issue because their object file was output as lib_cache.o and our Makefile was looking for cache_lib.cc to make cache_lib.o. In their evictor headers we had to change the include to be "../evictor.hh", our version of the evictor header, so that the compiler didn't complain about the same object being defined in two different places. They also included evictor.hh in their lru_evictor.cc file so we had to remove that.
 
 ## Part 2 - Albert + Yao
 |Name|Description|Status|
