@@ -32,6 +32,16 @@ We did not write tests that test the hasher or max_load_factor constructor param
 |test_fifo_evictor|tests the FIFO evictor for proper deletion order|pass|
 |test_lru_evictor_basic|tests the LRU evictor for deletion correctness|pass|
 
+In test_get, we set "key0" to the value "the quick brown fox jumps over the lazy dog", a string 43 characters in length. We give it a set length of 44 characters to account for the null terminator. (Setting 45 characters results in a segmentation fault as desired). Then we get the relevant character pointer and strcmp it to our original char array. For our original array, this is:
+
+the quick brown fox jumps over the lazy dog
+
+As desired. For our returned value, this is 
+
+the quick brown fox jumps over the lazy dogny analysisQ
+
+And then mojibake if you keep going. It ends in "ny analysisQ" very consistently, so I would call this undesired behavior.
+
 When testing the lru_evictor, we had used Lru_evictor where as they used LRU_Evictor for their class name. This created a compilation issue when creating an lru_evcitor object. 
 
 ## Part 2b - Kai+Max
