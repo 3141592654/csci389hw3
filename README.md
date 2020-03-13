@@ -2,11 +2,14 @@
 Mason Koch and Sebastian Simmons
 
 ## Usage instructions
-Make the project using make.
+Make the project using make. This will take a while. To run the tests, append \_GITHUB_USERNAME with \_GITHUB_USERNAME in ["\_enderquestral", "\_kai_pinckard", "\_zhengyaogu"] to your pick of
 
-./test_cache_lib  
-./test_fifo  
-./test_lru_evictor  
+./test_cache_lib
+./test_fifo
+./test_lru
+
+We didn't have to include this, but we did so anyway.
+
 ## Part 1 - Tests - Our Cache
 We did not write tests that test the hasher or max_load_factor constructor parameters as that would test the internal structure of the cache object. This makes it hard to test it in a meaningful way.
 
