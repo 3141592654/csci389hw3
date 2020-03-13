@@ -60,7 +60,7 @@ When testing the lru_evictor, we had used Lru_evictor where as they used LRU_Evi
 
 We had a compilation issue because their object file was output as lib_cache.o and our Makefile was looking for cache_lib.cc to make cache_lib.o. In their evictor headers we had to change the include to be "../evictor.hh", our version of the evictor header, so that the compiler didn't complain about the same object being defined in two different places. They also included evictor.hh in their lru_evictor.cc file so we had to remove that.
 
-In space_used, the very first line is requiring that it uses no space. It returned 78, which is not desired behavior. They might have a bug in reset because
+In space_used, the very first line requires that the cache uses no space. space_used() returned 78, which is not desired behavior. They might have a bug in reset because
 
 Reset also fails. That one adds three items to the cache, resets, and asserts the space used is 0. This again fails.
 
