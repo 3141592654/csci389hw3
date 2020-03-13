@@ -39,7 +39,7 @@ When testing the lru_evictor, we had used Lru_evictor where as they used LRU_Evi
 |----|-----------|------|
 |test_get|tests the retrieval of a stored object in cache|null|
 |test_del|tests deleting an object from the cache|null|
-|test_space_used|tests that the space used returns the proper value when objects are added to cache|FALSE|
+|test_space_used|tests that the space used returns the proper value when objects are added to cache|FAIL|
 |test_reset|tests that reset properly resets the cache|null|
 |test_fifo_evictor|tests the FIFO evictor for proper deletion order|null|
 |test_lru_evictor_basic|tests the LRU evictor for deletion correctness|FAIL|
