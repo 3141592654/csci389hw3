@@ -4,9 +4,9 @@ Mason Koch and Sebastian Simmons
 ## Usage instructions
 Make the project using make. This will take a while. To run the tests, append \_GITHUB_USERNAME with \_GITHUB_USERNAME in ["\_enderquestral", "\_kai_pinckard", "\_zhengyaogu"] to your pick of
 
-./test_cache_lib
-./test_fifo
-./test_lru
+./test_cache_lib  
+./test_fifo  
+./test_lru  
 
 We didn't have to include this, but we did so anyway.
 
