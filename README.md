@@ -22,6 +22,8 @@ We did not write tests that test the hasher or max_load_factor constructor param
 |test_fifo_evictor|tests the FIFO evictor for proper deletion order|pass|
 |test_lru_evictor_basic|tests the LRU evictor for deletion correctness|pass|
 
+We didn't update the size we returned in get. This was a horrific mistake on our part, it was so bad. But other than that we pass all of our own tests.
+
 ## Part 2a - Danny + Hannah
 |Name|Description|Status|
 |----|-----------|------|
