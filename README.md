@@ -46,7 +46,11 @@ When testing the lru_evictor, we had used Lru_evictor where as they used LRU_Evi
 
 We had a compilation issue because their object file was output as lib_cache.o and our Makefile was looking for cache_lib.cc to make cache_lib.o. In their evictor headers we had to change the include to be "../evictor.hh", our version of the evictor header, so that the compiler didn't complain about the same object being defined in two different places. They also included evictor.hh in their lru_evictor.cc file so we had to remove that.
 
-In space_used, one of our tests was to have two keys in our cache (we called them "key1" and "key2") and then to set "key1" to a different value. We asserted that the space used was equal to the size of key2's value and the size of key1's new value. Their space_used returned the size of both key1 and key2's old values plus the size of the new value. I talked to Eitan about this in lab and he said "that sounds like a bug".
+In space_used, the very first line is requiring that it uses no space. It returned 78, which is not desired behavior. They might have a bug in reset because
+
+Reset also fails. That one adds three items to the cache, resets, and asserts the space used is 0. This again fails.
+
+In test_lru_evictor_basic, one of our tests was to have two keys in our cache (we called them "key1" and "key2") and then to set "key1" to a different value. We asserted that the space used was equal to the size of key2's value and the size of key1's new value. Their space_used returned the size of both key1 and key2's old values plus the size of the new value. I talked to Eitan about this in lab and he said "that sounds like a bug".
 
 ## Part 2 - Albert + Yao
 |Name|Description|Status|
