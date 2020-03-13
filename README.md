@@ -41,7 +41,7 @@ When testing the lru_evictor, we had used Lru_evictor where as they used LRU_Evi
 |test_del|tests deleting an object from the cache|pass|
 |test_space_used|tests that the space used returns the proper value when objects are added to cache|FAIL|
 |test_reset|tests that reset properly resets the cache|FAIL|
-|test_fifo_evictor|tests the FIFO evictor for proper deletion order|null|
+|test_fifo_evictor|tests the FIFO evictor for proper deletion order|pass|
 |test_lru_evictor_basic|tests the LRU evictor for deletion correctness|FAIL|
 
 We had a compilation issue because their object file was output as lib_cache.o and our Makefile was looking for cache_lib.cc to make cache_lib.o. In their evictor headers we had to change the include to be "../evictor.hh", our version of the evictor header, so that the compiler didn't complain about the same object being defined in two different places. They also included evictor.hh in their lru_evictor.cc file so we had to remove that.
@@ -55,7 +55,7 @@ In space_used, one of our tests was to have two keys in our cache (we called the
 |test_del|tests deleting an object from the cache|pass|
 |test_space_used|tests that the space used returns the proper value when objects are added to cache|FAIL|
 |test_reset|tests that reset properly resets the cache|pass|
-|test_fifo_evictor|tests the FIFO evictor for proper deletion order|null|
+|test_fifo_evictor|tests the FIFO evictor for proper deletion order|pass|
 |test_lru_evictor_basic|tests the LRU evictor for deletion correctness|FAIL|
 
 We had to change the include of evictor.hh to use our version of the file because otherwise the compiler complained about the same object being defined in two different header files. 
