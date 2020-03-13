@@ -31,7 +31,7 @@ TEST_CASE( "test_get", "[placeholder]" ) {
     s = 45;
     const char* ret1 = test_cache.get("key0", s);
     REQUIRE(ret1 != nullptr);
-    //REQUIRE(s == 44);    // Our implementation fails this test, embarassingly.
+    REQUIRE(s == 44);    // Our implementation fails this test, embarassingly.
     REQUIRE(strcmp(charr0, ret1) == 0);
     // Add another test, make sure we can get back "J Q Vandz struck my big fox whelp".
     char charr2[] = "J Q Vandz struck my big fox whelp";

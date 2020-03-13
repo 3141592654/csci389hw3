@@ -4,7 +4,16 @@ LDFLAGS=$(CXXFLAGS)
 OBJ=$(SRC:.cc=.o)
 # This is ugly and long. But, it has the substantial advantage that the end user can press "make" and it will work.
 
-all:  test_cache_lib_enderquestral test_lru_enderquestral test_fifo_enderquestral test_cache_lib_zhengyaogu test_lru_zhengyaogu test_fifo_zhengyaogu test_cache_lib_kai_pinckard test_lru_kai_pinckard test_fifo_kai_pinckard
+all:  test_cache_lib_enderquestral test_lru_enderquestral test_fifo_enderquestral test_cache_lib_zhengyaogu test_lru_zhengyaogu test_fifo_zhengyaogu test_cache_lib_kai_pinckard test_lru_kai_pinckard test_fifo_kai_pinckard test_cache_lib_3141592654 test_fifo_3141592654 test_lru_3141592654
+
+test_cache_lib_3141592654: test_cache_lib.o cache_lib.o
+	$(CXX) $(LDFLAGS) -o $@ $^
+
+test_fifo_3141592654: test_fifo_3141592654.o fifo_evictor.o cache_lib.o
+	$(CXX) $(LDFLAGS) -o $@ $^
+
+test_lru_3141592654: test_lru_3141592654.o lru_evictor.o cache_lib.o
+	$(CXX) $(LDFLAGS) -o $@ $^
 
 test_cache_lib_enderquestral: test_cache_lib.o Systems_HW2/cache_lib.o
 	$(CXX) $(LDFLAGS) -o $@ $^
