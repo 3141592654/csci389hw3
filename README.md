@@ -22,7 +22,7 @@ We did not write tests that test the hasher or max_load_factor constructor param
 |test_fifo_evictor|tests the FIFO evictor for proper deletion order|pass|
 |test_lru_evictor_basic|tests the LRU evictor for deletion correctness|pass|
 
-## Part 2 - Danny + Hannah
+## Part 2a - Danny + Hannah
 |Name|Description|Status|
 |----|-----------|------|
 |test_get|tests the retrieval of a stored object in cache|pass|
@@ -34,7 +34,7 @@ We did not write tests that test the hasher or max_load_factor constructor param
 
 When testing the lru_evictor, we had used Lru_evictor where as they used LRU_Evictor for their class name. This created a compilation issue when creating an lru_evcitor object. 
 
-## Part 2 - Kai+Max
+## Part 2b - Kai+Max
 |Name|Description|Status|
 |----|-----------|------|
 |test_get|tests the retrieval of a stored object in cache|pass|
@@ -52,7 +52,7 @@ Reset also fails. That one adds three items to the cache, resets, and asserts th
 
 In test_lru_evictor_basic, one of our tests was to have two keys in our cache (we called them "key1" and "key2") and then to set "key1" to a different value. We asserted that the space used was equal to the size of key2's value and the size of key1's new value. Their space_used returned the size of both key1 and key2's old values plus the size of the new value. I talked to Eitan about this in lab and he said "that sounds like a bug".
 
-## Part 2 - Albert + Yao
+## Part 2c - Albert + Yao
 |Name|Description|Status|
 |----|-----------|------|
 |test_get|tests the retrieval of a stored object in cache|pass|
