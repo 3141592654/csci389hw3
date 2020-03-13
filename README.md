@@ -64,7 +64,7 @@ In space_used, the very first line requires that the cache uses no space. space_
 
 Reset also fails. That one adds three items to the cache, resets, and asserts the space used is 0. This again fails.
 
-In test_lru_evictor_basic, one of our tests was to have two keys in our cache (we called them "key1" and "key2") and then to set "key1" to a different value. We asserted that the space used was equal to the size of key2's value and the size of key1's new value. Their space_used returned the size of both key1 and key2's old values plus the size of the new value. I talked to Eitan about this in lab and he said "that sounds like a bug".
+Once again, we had to change the capitalisation of LRUEvictor. In test_lru_evictor_basic, one of our tests was to have two keys in our cache (we called them "key1" and "key2") and then to set "key1" to a different value. We asserted that the space used was equal to the size of key2's value and the size of key1's new value. Their space_used returned the size of both key1 and key2's old values plus the size of the new value. I talked to Eitan about this in lab and he said "that sounds like a bug".
 
 ## Part 2c - Albert + Yao
 |Name|Description|Status|
