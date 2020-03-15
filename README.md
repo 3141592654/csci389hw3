@@ -78,4 +78,8 @@ Once again, we had to change the capitalisation of LRUEvictor. In test_lru_evict
 |test_fifo_evictor|tests the FIFO evictor for proper deletion order|pass|
 |test_lru_evictor_basic|tests the LRU evictor for deletion correctness|FAIL|
 
-We had to change the include of evictor.hh to use our version of the file because otherwise the compiler complained about the same object being defined in two different header files. We also had to change our LRU evictor tests to use their variable name for the LRU evictor. When testing space_used() their cache threw an error that there was not enough space left to insert new keys. This is due to the fact that their cache.reset() method also resets the max_mem to 0. This is not desired behavior, especially because the did not include a way to change max_mem to something nonzero. Since we call reset() after every test, this means our subsequent tests have issues inserting keys. Our delete and reset tests nevertheless passed. We were not sure if this was desired behavior.
+We had to change the include of evictor.hh to use our version of the file because otherwise the compiler complained about the same object being defined in two different header files. We also had to change our LRU evictor tests to use their variable name for the LRU evictor.
+
+When testing space_used() their cache threw an error that there was not enough space left to insert new keys. This is because their cache.reset() method sets the max_mem to 0. This is not desired behavior, especially because it did not include a way to change max_mem back to something nonzero. Since we call reset() after every test, this means every test after the first one has issues inserting keys. Our delete and reset tests nevertheless passed. We were not sure if this was desired behavior.
+
+The LRU tests failed because on line 43, lru_evictor.cc falsely asserted that if the tail is a nullptr, the head is a nullptr also.
